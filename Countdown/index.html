@@ -9,16 +9,6 @@
 
 </head>
 <body>
-
-    <div id="dateSelection-area"  class="selectionDiv" >
-        <label for="dateSelector">Select a date to create a Countdown </label>
-        <input type="date" id="dateSelector" name="dateSelector" onchange="calendarChange(this.value)">
-        </br>
-        <label for="urlArea">Copy the URL and embeded to yout notion.</label>
-        <textarea id="urlArea" name="urlArea" rows="4" cols="50" disabled readonly></textarea>
-        <button onclick="myFunction()">Copy text</button>
-   </div>
-    
     <div id="preview">
         <div id="countdown-area" class="centerDiv">
             <div class="selected-date"></div>
@@ -33,7 +23,7 @@
             <div class="selected-date"></div>
             <div id="expired-date">EXPIRED DATE</div>
             <button id="newDateButton" onclick="window.open('https://martagd.github.io/countdownWidget/index.html')" ">Get new Embedded</button>
-       </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

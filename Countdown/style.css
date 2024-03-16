@@ -1,0 +1,30 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Changed to transparent */
+}
+
+.centerDiv{
+    text-align: center;
+    background: #E9E5E3; /*Brown LM*/
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    position:absolute;
+}
+
+
+.icon {
+    cursor: pointer;
+}
+
+
+#expired-area {
+    visibility: hidden;
+}
