@@ -32,10 +32,28 @@ body, html {
    /*visibility: hidden;*/
 }
 
+.selectionDiv {
+    text-align: center;
+    background: #E9E5E3; /*Brown LM*/
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
+    padding: 20px;
+    position: absolute;
+}
+
 .icon {
     cursor: pointer;
 }
 
-#countdown-area{
+#countdown-area {
+    visibility: hidden;
+}
+
+
+#expired-area {
     visibility: hidden;
 }

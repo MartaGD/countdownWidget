@@ -10,24 +10,31 @@
 </head>
 <body>
 
-    <div id="dateSelection-area"  class="centerDiv" >
+    <div id="dateSelection-area"  class="selectionDiv" >
         <label>Select a date to create a Countdown </label>
-        <input type="date" id="birthday" name="birthday" onchange="calendarChange(this.value)">
-        <div class="selected-date"></br></div>
-        <button onclick="enterDate()">Enter Date</button>
+        <input type="date" id="DateCountdown" name="DateCountdown" onchange="calendarChange(this.value)">
+        <div id="selection"></br></div>
+        <button id="enterDateButton" disabled="true" onclick="enterDate()">Enter Date</button>
     </div>
 
     <div id="countdown-area" class="centerDiv">
         <div>
             <i class="glyphicon glyphicon-remove icon" onclick="newCountdown()"></i>
         </div> 
-        <div class="selected-date"></div>
+        <div id="selected-date"></div>
         <div id="try"></div>
         <div id="countdownD"></div>
         <div id="countdownH"></div>
         <div id="countdownM"></div>
         <div id="countdownS"></div>
     </div>
+
+    <div id="expired-area" class="centerDiv">
+        <div class="selected-date"></div>
+        <div id="expired-date">EXPIRED DATE</div>
+        <button id="newDateButton" onclick="newCountdown()">Enter Date</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
