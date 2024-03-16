@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="centerDiv" id="dateSelection-area">
+        <label>Select a date to create a Countdown </label>
+        <input type="date" id="birthday" name="birthday" onchange="calendarChange(this.value)">
+        <div class="selected-date"></br></div>
+        <button onclick="enterDate()">Enter Date</button>
+    </div>
+    <div class="centerDiv" id="countdown-area">
+        <div>
+            <i class="glyphicon glyphicon-remove icon" onclick="newCountdown()"></i>
+        </div> 
+        <div class="selected-date"></div>
+        <div id="try"></div>
+        <div id="countdownD"></div>
+        <div id="countdownH"></div>
+        <div id="countdownM"></div>
+        <div id="countdownS"></div>
+    </div>
+</body>
+</html>
