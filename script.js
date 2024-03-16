@@ -43,7 +43,7 @@ function calendarChange(val){
         }
         //document.getElementById("selected-date").innerHTML = "Selected Date: " + date.toLocaleDateString();
         selDate = val; //val is the date in short format
-        let url = new URL(window.location.origin+"/Countdown/index.html");
+        let url = new URL(window.location.origin+window.location.pathname+"/Countdown/index.html");
         url.searchParams.append("selectedDate",selDate);
         document.getElementById("urlArea").innerHTML = url;
         document.getElementById("countdown-area").style.visibility = "visible";
