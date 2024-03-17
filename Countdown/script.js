@@ -1,17 +1,5 @@
 let selDate = "";
-/*
-function myFunction() {
-    // Get the text field
-    var copyText = document.getElementById("urlArea");
-  
-    // Select the text field
-    copyText.select();
-    copyText.setSelectionRange(0, 99999); // For mobile devices
-  
-    // Copy the text inside the text field
-    navigator.clipboard.writeText(copyText.value);
-
-  }*/
+const url = window.location.href;
 
 function checkDate(date){
     const now = new Date();
@@ -22,63 +10,37 @@ function checkDate(date){
     }
 
 }
-/*
-function newCountdown(){
-    let url = new URL(window.location.href);
-    url.searchParams.delete("selectedDate");
-    window.location.href = url;
-    selDate = "";
-    document.getElementById("countdown-area").style.visibility = "hidden";
-
-    document.getElementById("expired-area").style.visibility = "hidden";
-}*/
-/*
-function calendarChange(val){
-
-    let date = new Date(val);
-    if(checkDate(date)){
-        document.getElementById("selected-date").innerHTML = "Selected Date: " + date.toLocaleDateString();
-        selDate = val; //val is the date in short format
-        let url = new URL(window.location.href);
-        url.searchParams.append("selectedDate",selDate);
-        document.getElementById("urlArea").innerHTML = url;
-    }else{
-        document.getElementById("selected-date").innerHTML = "The date " + date.toLocaleDateString() + " is not Valid. <//br> Choose a date in the future.";
-    }
-
-}*/
-/*
-function enterDate(){
-    let url = new URL(window.location.href);
-    url.searchParams.append("selectedDate",selDate);
-    window.location.href = url;
-   // document.getElementById("dateSelection-area").style.visibility = "hidden";
-    document.getElementById("countdown-area").style.visibility = "visible";
-    document.getElementById("expired-area").style.visibility = "hidden";
-    getCountdown();
-}*/
 
 function hasDate(){
     let url = new URL(window.location.href);
     url.searchParams.append("selectedDate",selDate);
-    //window.location.href = url;
-   // document.getElementById("dateSelection-area").style.visibility = "hidden";
+    let textLabel = url.searchParams.get("textLabel") ;
     document.getElementById("countdown-area").style.visibility = "visible";
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-        document.getElementsByClassName("selected-date")[i].innerHTML =  "Selected Date: " + selDate.toLocaleDateString();
+        if(url.searchParams.get("showDate")){
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + selDate.toLocaleDateString();
+        }else{
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel;
+        }
+        
     }
-    //document.getElementById("selected-date").innerHTML = "Selected Date: " + val;
     getCountdown();
 }
 
 function getCountdown(){
     const now = new Date();
     const date2 = new Date(selDate);
+    let url = new URL(window.location.href);
+    let textLabel = url.searchParams.get("textLabel") ;
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-        document.getElementsByClassName("selected-date")[i].innerHTML =  "Selected Date: " + date2.toLocaleDateString();
+        if(url.searchParams.get("showDate")){
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + date2.toLocaleDateString();
+        }else{
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel;
+        }
+        
     }
-    //document.getElementById("selected-date").innerHTML = "Selected Date: " + date2.toLocaleDateString();
-    const diffTime = Math.abs(date2 - now);
+const diffTime = Math.abs(date2 - now);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const diffHours= Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));; 
     const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
@@ -95,10 +57,20 @@ function init() {
     let textcolor = url.searchParams.get("textColor");
     let bgColor = url.searchParams.get("bgColor");
     let roundCorners = url.searchParams.get("rCorners");
+    let textLabel = url.searchParams.get("textLabel");
+    let showDate = url.searchParams.get("showDate");
+    let icon = url.searchParams.get("icon");
     for (let i = 0; i < document.getElementsByClassName("centerDiv").length; i++) {
         document.getElementsByClassName("centerDiv")[i].style.color = textcolor;
         document.getElementsByClassName("centerDiv")[i].style.backgroundColor = bgColor;    
         document.getElementsByClassName("centerDiv")[i].style.borderRadius  = roundCorners; 
+    }
+    for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
+        if(showDate){
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + date.toLocaleDateString();
+        }else{
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel
+        } 
     }
     if (url.searchParams.has("selectedDate") && checkDate(date)){
         //calendarChange(date);

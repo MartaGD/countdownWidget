@@ -22,8 +22,9 @@ const themes = {
 const urlWidget = new URL(window.location.origin+window.location.pathname+"/Countdown/index.html");
 let selDate = new Date();
 selDate.setDate(selDate.getDate() + 1);
+let visualDate = "";
 
-function myFunction() {
+function copyAreaBtn() {
     // Get the text field
     var copyText = document.getElementById("urlArea");
   
@@ -57,11 +58,10 @@ function newCountdown(){
 }
 */
 function calendarChange(val){
-
-    let date = new Date(val);
-    if(checkDate(date)){
+    visualDate = new Date(val);
+    if(checkDate(visualDate)){
         for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-            document.getElementsByClassName("selected-date")[i].innerHTML = "Selected Date: " + date.toLocaleDateString();
+            document.getElementsByClassName("selected-date")[i].innerHTML = "Selected Date: " + visualDate.toLocaleDateString();
         }
         //document.getElementById("selected-date").innerHTML = "Selected Date: " + date.toLocaleDateString();
         selDate = val; //val is the date in short format
@@ -73,7 +73,7 @@ function calendarChange(val){
     }else{
         selDate = val;
         for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-            document.getElementsByClassName("selected-date")[i].innerHTML = "The date " + date.toLocaleDateString() + " is not Valid. <//br> Choose a date in the future.";
+            document.getElementsByClassName("selected-date")[i].innerHTML = "The date " + visualDate.toLocaleDateString() + " is not Valid. <//br> Choose a date in the future.";
         }
         document.getElementById("countdown-area").style.visibility = "hidden";
         document.getElementById("expired-area").style.visibility = "visible";
@@ -237,14 +237,45 @@ function selectColorBg(val){
     urlWidget.searchParams.set("bgColor",val);
     document.getElementById("urlArea").innerHTML = urlWidget;
 }
+
 /*rCorners*/
+function selectCorners(val){
+    for (let i = 0; i < document.getElementsByClassName("centerDiv").length; i++) {
+        document.getElementsByClassName("centerDiv")[i].style.borderRadius = val+"%";    
+    }
+    urlWidget.searchParams.set("rCorners",val+"%");
+    document.getElementById("urlArea").innerHTML = urlWidget;
+}
+
+function selectLabel(){
+    let textLabel = document.getElementById("labelSelector").value;
+    let showDate = document.getElementById("labelDate").checked;
+     //let icon = document.getElementById("iconLabel").value;
+    visualDate = new Date(selDate);
+        for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
+             if(showDate){
+                document.getElementsByClassName("selected-date")[i].style.innerHTML = textLabel + visualDate.toLocaleDateString();    
+            }else{
+                document.getElementsByClassName("selected-date")[i].style.innerHTML = textLabel;
+            }
+        }
+    urlWidget.searchParams.set("textLabel",textLabel);
+    urlWidget.searchParams.set("showDate",showDate);
+    //urlWidget.searchParams.set("icon",icon);
+    document.getElementById("urlArea").innerHTML = urlWidget;
+}
 
 function getCountdown(){
     const now = new Date();
-    const date2 = new Date(selDate);
+    const date2  = new Date(selDate);
+    let visualDate = date2;
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
         if(checkDate(date2)){
-            document.getElementsByClassName("selected-date")[i].innerHTML =  "Selected Date: " + date2.toLocaleDateString();
+            if(document.getElementById("labelDate").checked){
+                document.getElementsByClassName("selected-date")[i].innerHTML =  document.getElementById("labelSelector").value + visualDate.toLocaleDateString();
+            }else{
+                document.getElementsByClassName("selected-date")[i].innerHTML =  document.getElementById("labelSelector").value;
+            }
             const diffTime = Math.abs(date2 - now);
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
             const diffHours= Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));; 

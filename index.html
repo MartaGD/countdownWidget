@@ -58,12 +58,36 @@
                     <input type="color" id="colorBGSelect" name="colorSelect" value="#000000" onchange="selectColorBg(this.value)" disabled>
                 </div>
             </div>
+        </br>
+            <div>
+                Round the corners of your widget
+                <input type="range" id="rounderSelector" name="rounderSelector" value="0" onchange="selectCorners(this.value)">
+            </div>
+        </br>
+            <div>
+                Personalize the countdown label</br>
+                <input type="text" id="labelSelector" name="labelSelector" value="Selected Date: " onchange="selectLabel(this.value)">
+                </br>
+                Do you want to see the final date? 
+                <input type="checkbox" checked id="labelDate" onchange="selectLabel(this.value)">
+            <!--    </br>ICon?
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-heart-empty"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-phone"></span>
+                </button>  
+            -->
+            </div>
         </div>
 
     </br>
         Copy the URL and embeded to yout notion.
         <textarea id="urlArea" name="urlArea" rows="4" cols="50" disabled readonly></textarea>
-        <button onclick="myFunction()">Copy text</button>
+        <button onclick="copyAreaBtn()">Copy text</button>
     </div>
     
     <div id="preview">
