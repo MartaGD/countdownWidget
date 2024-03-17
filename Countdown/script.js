@@ -1,5 +1,5 @@
 let selDate = "";
-
+/*
 function myFunction() {
     // Get the text field
     var copyText = document.getElementById("urlArea");
@@ -11,7 +11,7 @@ function myFunction() {
     // Copy the text inside the text field
     navigator.clipboard.writeText(copyText.value);
 
-  }
+  }*/
 
 function checkDate(date){
     const now = new Date();
@@ -92,6 +92,14 @@ function getCountdown(){
 function init() {  
     let url = new URL(window.location.href);
     let date = new Date(url.searchParams.get("selectedDate"));
+    let textcolor = url.searchParams.get("textColor");
+    let bgColor = url.searchParams.get("bgColor");
+    let roundCorners = url.searchParams.get("rCorners");
+    for (let i = 0; i < document.getElementsByClassName("centerDiv").length; i++) {
+        document.getElementsByClassName("centerDiv")[i].style.color = textcolor;
+        document.getElementsByClassName("centerDiv")[i].style.backgroundColor = bgColor;    
+        document.getElementsByClassName("centerDiv")[i].style.borderRadius  = roundCorners; 
+    }
     if (url.searchParams.has("selectedDate") && checkDate(date)){
         //calendarChange(date);
         selDate = date; //val is the date in short format
