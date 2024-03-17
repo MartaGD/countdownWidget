@@ -17,7 +17,7 @@ function hasDate(){
     let textLabel = url.searchParams.get("textLabel") ;
     document.getElementById("countdown-area").style.visibility = "visible";
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-        if(url.searchParams.get("showDate")){
+        if(url.searchParams.get("showDate") === "true"){
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + selDate.toLocaleDateString();
         }else{
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel;
@@ -33,22 +33,22 @@ function getCountdown(){
     let url = new URL(window.location.href);
     let textLabel = url.searchParams.get("textLabel") ;
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-        if(url.searchParams.get("showDate")){
+        if(url.searchParams.get("showDate") === "true"){
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + date2.toLocaleDateString();
         }else{
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel;
         }
         
     }
-const diffTime = Math.abs(date2 - now);
+    const diffTime = Math.abs(date2 - now);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const diffHours= Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));; 
     const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
     const diffSeconds = Math.floor((diffTime % (1000 * 60)) / 1000); 
-    document.getElementById("countdownD").innerHTML = "Days: " + diffDays;
-    document.getElementById("countdownH").innerHTML = "Hours: " + diffHours;
-    document.getElementById("countdownM").innerHTML = "Minutes: " + diffMinutes;
-    document.getElementById("countdownS").innerHTML = "Seconds: " + diffSeconds;
+    document.getElementById("countdownD").innerHTML = diffDays;
+    document.getElementById("countdownH").innerHTML = diffHours;
+    document.getElementById("countdownM").innerHTML = diffMinutes;
+    document.getElementById("countdownS").innerHTML = diffSeconds;
 }
 
 function init() {  
@@ -66,10 +66,10 @@ function init() {
         document.getElementsByClassName("centerDiv")[i].style.borderRadius  = roundCorners; 
     }
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
-        if(showDate){
+        if(showDate === "true"){
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + date.toLocaleDateString();
         }else{
-            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel
+            document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel;
         } 
     }
     if (url.searchParams.has("selectedDate") && checkDate(date)){

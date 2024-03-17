@@ -20,21 +20,17 @@ body, html {
     justify-content: center;
 }
 
-.text-label{
-    font-style: normal;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
 .centerDiv {
     color: #FFFFFF90;
     text-align: center;
     background: #2F3437;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
     position: absolute;
     border-radius: 0%;
 }
@@ -50,12 +46,51 @@ body, html {
     align-items: center;
 }
 
-.icon {
-    cursor: pointer;
+.btn-help {
+    position: absolute;
+    float: left;
+    bottom: 1%;
+    align-self: baseline;
+    background-color: antiquewhite;
+    padding: 1%;
 }
 
-
+#infoArea{
+    visibility: hidden;
+}
 
 #expired-area {
     visibility: hidden;
+}
+
+.text-label{
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.selected-date{
+    font-weight: bold;
+}
+
+.calendarRow {
+    display: ruby;
+    margin: 4%;
+    font-size: xx-large;
+    max-width: 95%;
+    width: 90%;
+}
+
+.cardRow {
+    max-width: 15%;
+    width: 14%;
+    margin: 5px;
+    display: grid;
+    position: sticky;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-evenly;
+}
+
+.calendar-label {
+    font-size: small;
 }

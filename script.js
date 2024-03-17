@@ -37,6 +37,13 @@ function copyAreaBtn() {
 
   }
 
+  function showInfo(){
+    document.getElementById("infoArea").style.visibility = "visible";
+  }
+  function hideInfo(){
+    document.getElementById("infoArea").style.visibility = "hidden";
+  }
+
 function checkDate(date){
     const now = new Date();
     if(date > now){ 
@@ -65,7 +72,7 @@ function calendarChange(val){
         }
         //document.getElementById("selected-date").innerHTML = "Selected Date: " + date.toLocaleDateString();
         selDate = val; //val is the date in short format
-        urlWidget.searchParams.append("selectedDate",selDate);
+        urlWidget.searchParams.set("selectedDate",selDate);
         document.getElementById("urlArea").innerHTML = urlWidget;
         document.getElementById("countdown-area").style.visibility = "visible";
         document.getElementById("expired-area").style.visibility = "hidden";
@@ -281,10 +288,10 @@ function getCountdown(){
             const diffHours= Math.floor((diffTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));; 
             const diffMinutes = Math.floor((diffTime % (1000 * 60 * 60)) / (1000 * 60));
             const diffSeconds = Math.floor((diffTime % (1000 * 60)) / 1000); 
-            document.getElementById("countdownD").innerHTML = "Days: " + diffDays;
-            document.getElementById("countdownH").innerHTML = "Hours: " + diffHours;
-            document.getElementById("countdownM").innerHTML = "Minutes: " + diffMinutes;
-            document.getElementById("countdownS").innerHTML = "Seconds: " + diffSeconds;
+            document.getElementById("countdownD").innerHTML = diffDays;
+            document.getElementById("countdownH").innerHTML = diffHours;
+            document.getElementById("countdownM").innerHTML = diffMinutes;
+            document.getElementById("countdownS").innerHTML = diffSeconds;
         }else{
             document.getElementsByClassName("selected-date")[i].innerHTML = "The date " + date2.toLocaleDateString() + " is not Valid. <//br> Choose a date in the future.";
         }

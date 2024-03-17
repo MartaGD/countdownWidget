@@ -88,16 +88,43 @@
         Copy the URL and embeded to yout notion.
         <textarea id="urlArea" name="urlArea" rows="4" cols="50" disabled readonly></textarea>
         <button onclick="copyAreaBtn()">Copy text</button>
+    </br>
+    <div id="infoArea">
+        To get the Widget you need to follow the steps:</br>
+        1.sdsd</br>
+        2.ssdsd</br>
+    </div>
+
+    <div class="btn-help">
+        <span class="glyphicon glyphicon-phone" onmouseover="showInfo()" onmouseleave="hideInfo()"></span>
+    </div>
+        
     </div>
     
     <div id="preview">
         <div id="countdown-area" class="centerDiv">
-            <div class="selected-date"></div>
-            <div id="try"></div>
-            <div id="countdownD"></div>
-            <div id="countdownH"></div>
-            <div id="countdownM"></div>
-            <div id="countdownS"></div>
+            <div class="selected-date text-label"></div>
+            <div class="calendarRow">
+                <div id="daysClndr" class="cardRow">
+                    <div id="countdownD"></div>
+                    <div class="calendar-label">D</div>
+                </div>
+                <div id="hoursClndr" class="cardRow">
+                    <div id="countdownH"></div>
+                    <div class="calendar-label">H</div>
+                </div>
+                <div id="minutesClndr" class="cardRow">
+                    <div id="countdownM"></div>
+                    <div class="calendar-label">M</div>
+                </div>
+                <div id="secondsClndr" class="cardRow">
+                    <div id="countdownS"></div>
+                    <div class="calendar-label">S</div>
+                </div>
+            </div>
+            <div>
+               <span class="glyphicon glyphicon-phone"></span>
+            </div>
         </div>
 
         <div id="expired-area" class="centerDiv">
@@ -106,6 +133,8 @@
             <button id="newDateButton" onclick="window.open('https://martagd.github.io/countdownWidget/index.html')" ">Get new Embedded</button>
        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="script.js"></script>    
+    <script src="/Countdown/script.js"></script>
 </body>
 </html>

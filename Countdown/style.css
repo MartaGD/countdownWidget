@@ -30,3 +30,36 @@ body, html {
 #expired-area {
     visibility: hidden;
 }
+
+.text-label{
+    font-style: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.selected-date{
+    font-weight: bold;
+}
+
+.calendarRow {
+    display: ruby;
+    margin: 4%;
+    font-size: xx-large;
+    max-width: 95%;
+    width: 90%;
+}
+
+.cardRow {
+    max-width: 15%;
+    width: 14%;
+    margin: 5px;
+    display: grid;
+    position: sticky;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-evenly;
+}
+
+.calendar-label {
+    font-size: small;
+}
