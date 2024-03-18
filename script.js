@@ -64,6 +64,7 @@ function newCountdown(){
     document.getElementById("expired-area").style.visibility = "hidden";
 }
 */
+
 function calendarChange(val){
     visualDate = new Date(val);
     if(checkDate(visualDate)){
@@ -253,11 +254,25 @@ function selectCorners(val){
     urlWidget.searchParams.set("rCorners",val+"%");
     document.getElementById("urlArea").innerHTML = urlWidget;
 }
+function selectIcon(val){
+    let iconClass = "glyphicon-"+val;
+    let list = document.getElementById("iconDecor").classList;
+    //let item = list.item(1);
+    
+    if(!(list.item(1) === iconClass)){
+        document.getElementById("iconDecor").classList.remove(list.item(1));
+        document.getElementById("iconDecor").classList.add(iconClass);
+    }else{
+        document.getElementById("iconDecor").classList.remove(list.item(1));
+    }
+    urlWidget.searchParams.set("icon",iconClass); 
+    document.getElementById("urlArea").innerHTML = urlWidget;   
+}
 
 function selectLabel(){
     let textLabel = document.getElementById("labelSelector").value;
     let showDate = document.getElementById("labelDate").checked;
-     //let icon = document.getElementById("iconLabel").value;
+    
     visualDate = new Date(selDate);
         for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
              if(showDate){
@@ -268,7 +283,6 @@ function selectLabel(){
         }
     urlWidget.searchParams.set("textLabel",textLabel);
     urlWidget.searchParams.set("showDate",showDate);
-    //urlWidget.searchParams.set("icon",icon);
     document.getElementById("urlArea").innerHTML = urlWidget;
 }
 
@@ -296,6 +310,15 @@ function getCountdown(){
             document.getElementsByClassName("selected-date")[i].innerHTML = "The date " + date2.toLocaleDateString() + " is not Valid. <//br> Choose a date in the future.";
         }
     }
+    urlWidget.searchParams.set("selectedDate",date2);
+
+    urlWidget.searchParams.set("showDate","true");
+    urlWidget.searchParams.set("textLabel","Selected Date: ");
+    urlWidget.searchParams.set("textColor","#FFFFFF90");
+    urlWidget.searchParams.set("bgcolor","#2F3437");
+    urlWidget.searchParams.set("rCorners","0%");
+    urlWidget.searchParams.set("icon","glyphicon-phone"); 
+    document.getElementById("urlArea").innerHTML = urlWidget;
 }
  
 

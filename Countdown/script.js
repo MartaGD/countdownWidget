@@ -65,6 +65,7 @@ function init() {
         document.getElementsByClassName("centerDiv")[i].style.backgroundColor = bgColor;    
         document.getElementsByClassName("centerDiv")[i].style.borderRadius  = roundCorners; 
     }
+    document.getElementById("iconDecor").classList.add(icon);
     for (let i = 0; i < document.getElementsByClassName("selected-date").length; i++) {
         if(showDate === "true"){
             document.getElementsByClassName("selected-date")[i].innerHTML =  textLabel + date.toLocaleDateString();
@@ -76,13 +77,13 @@ function init() {
         //calendarChange(date);
         selDate = date; //val is the date in short format
         hasDate();
-        //alert("Copia esta URL en tu Notion: "+url);
+        alert("Copia esta URL en tu Notion: "+url);
     }else if(url.searchParams.has("selectedDate") && !checkDate(date)){
         document.getElementById("countdown-area").style.visibility = "hidden";
         document.getElementById("expired-area").style.visibility = "visible";
-        //alert("No tiene fecha informada :(");
+        alert("No tiene fecha informada :(");
     }else if(!checkDate(date)){
-       //alert("No tiene fecha informada :(");
+       alert("No tiene fecha informada :(");
     }
     
 }
@@ -91,3 +92,18 @@ window.onload = init();
 
 setInterval(getCountdown, 1000);
 getCountdown(selDate);
+
+/*
+titulo en negrita h3 DONE
+añadir más espacio entre las labels i ls inputs (16 por ejemplo) DONE
+16 o 18 sz. DONE
+los inputs han de ser maás altos DONE
+iconos de inputs más grnades
+puntos 1 2 3 más grande i en negrita DONE
+
+BUUG segons en mnenys d'un xifra
+
+roconre not passa
+selected date no borra 
+text color no passa
+*/

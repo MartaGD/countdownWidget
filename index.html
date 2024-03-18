@@ -9,97 +9,111 @@
 </head>
 <body>
 
-    <div id="dateSelection-area"  class="selectionDiv text-label" >
-        <div>
-            Select a date to create a Countdown:
+    <div id="selection-area"  class="selectionDiv text-label overflow-auto" >  <!-- start lateral bar -->
+        <div class="section-area"> <!-- start title area -->
+            <h3>Countdown Widget Personalizer</h3><h4>for Notion by <a href="https://martagd.gumroad.com/">MartaGD</a></h5>
+        </div><!-- end title area -->
+
+
+        <div class="section-area"> <!-- start date selection -->
+            <b>1. Select a date for your countdown</b>
             </br>
             <input type="date" id="dateSelector" name="dateSelector" onchange="calendarChange(this.value)">    
-        </div>
+        </div><!-- end date selection -->
 
-    </br>
+        <div class="section-area"> <!-- start personalization area -->
+            <div class="section-area">  <!-- start of timer personalization area-->
+                <b>2. Personalize your countdown</b>
+                <div> <!-- start theme picker area -->
+                    <input class="form-check-input" type="radio" name="personalizeColors" id="themePicker" value="theme" checked onchange="radioChange(this.value)">
+                    Select one of the Notion themes
+                    <div>
+                        <select class="form-select" name="notionThemeSelector" id="notionThemeSelector" onchange="selectTheme(this.value)" >
+                            <option value="darkMode" selected >Dark Mode</option>
+                            <option value="grayLM">Gray Light Mode</option>
+                            <option value="grayDM">Gray Dark Mode</option>
+                            <option value="brownLM">Brown Light Mode</option>
+                            <option value="brownDM">Brown Dark Mode</option>
+                            <option value="orangeLM">Orange Light Mode</option>
+                            <option value="orangeDM">Orange Dark Mode</option>
+                            <option value="yellowLM">Yellow Light Mode</option>
+                            <option value="yellowDM">Yellow Dark Mode</option>
+                            <option value="greenLM">Green Light Mode</option>
+                            <option value="greenDM">Green Dark Mode</option>
+                            <option value="blueLM">Blue Light Mode</option>
+                            <option value="blueDM">Blue Dark Mode</option>
+                            <option value="purpleLM">Purple Light Mode</option>
+                            <option value="purpleDM">Purple Dark Mode</option>
+                            <option value="pinkLM">Pink Light Mode</option>
+                            <option value="pinkDM">Pink Dark Mode</option>
+                            <option value="redLM">Red Light Mode</option>
+                            <option value="redDM">Red Dark Mode</option>
+                        </select>
+                    </div>
+                </div> <!-- end theme picker area -->
+                <div class="section-area"><!-- start color pick area -->
+                    <input class="form-check-input" type="radio" name="personalizeColors" id="colorPicker" value="color" onchange="radioChange(this.value)">
+                    Or select a color from the color wheel
+                    <div id="colorsPicker" >
+                        Text
+                        <input type="color" id="colorTextSelect" name="colorSelect" value="#FFFFFF" onchange="selectColorText(this.value)" disabled >
+                        </br>
+                        Background
+                        <input type="color" id="colorBGSelect" name="colorSelect" value="#000000" onchange="selectColorBg(this.value)" disabled>
+                    </div>
+                </div><!-- end color pick area -->
 
-        <div>
-            Select your personalition:
-            <div>
-                <input class="form-check-input" type="radio" name="personalizeColors" id="themePicker" value="theme" checked onchange="radioChange(this.value)">
-                Select one of the Notion themes
-                <div>
-                    <select class="form-select" name="notionThemeSelector" id="notionThemeSelector" onchange="selectTheme(this.value)" >
-                        <option value="darkMode" selected >Dark Mode</option>
-                        <option value="grayLM">Gray Light Mode</option>
-                        <option value="grayDM">Gray Dark Mode</option>
-                        <option value="brownLM">Brown Light Mode</option>
-                        <option value="brownDM">Brown Dark Mode</option>
-                        <option value="orangeLM">Orange Light Mode</option>
-                        <option value="orangeDM">Orange Dark Mode</option>
-                        <option value="yellowLM">Yellow Light Mode</option>
-                        <option value="yellowDM">Yellow Dark Mode</option>
-                        <option value="greenLM">Green Light Mode</option>
-                        <option value="greenDM">Green Dark Mode</option>
-                        <option value="blueLM">Blue Light Mode</option>
-                        <option value="blueDM">Blue Dark Mode</option>
-                        <option value="purpleLM">Purple Light Mode</option>
-                        <option value="purpleDM">Purple Dark Mode</option>
-                        <option value="pinkLM">Pink Light Mode</option>
-                        <option value="pinkDM">Pink Dark Mode</option>
-                        <option value="redLM">Red Light Mode</option>
-                        <option value="redDM">Red Dark Mode</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <input class="form-check-input" type="radio" name="personalizeColors" id="colorPicker" value="color" onchange="radioChange(this.value)">
-                Or select a color from the color wheel
-                <div id="colorsPicker" >
-                    Text
-                    <input type="color" id="colorTextSelect" name="colorSelect" value="#FFFFFF" onchange="selectColorText(this.value)" disabled >
-                    </br>
-                    Background
-                    <input type="color" id="colorBGSelect" name="colorSelect" value="#000000" onchange="selectColorBg(this.value)" disabled>
-                </div>
-            </div>
-        </br>
-            <div>
-                Round the corners of your widget
-                <input type="range" id="rounderSelector" name="rounderSelector" value="0" onchange="selectCorners(this.value)">
-            </div>
-        </br>
-            <div>
+                <div class="section-area-inside"> <!-- start round corners area -->
+                    Round the corners of your widget
+                    <input type="range" id="rounderSelector" name="rounderSelector" value="0" onchange="selectCorners(this.value)">
+                </div><!-- end round corners area -->
+            </div> <!-- end of timer personalization area-->
+
+            <div class="section-area">  <!-- start label personzalization area -->
                 Personalize the countdown label</br>
                 <input type="text" id="labelSelector" name="labelSelector" value="Selected Date: " onchange="selectLabel(this.value)">
                 </br>
-                Do you want to see the final date? 
+                Chek if you want to see the final date:
                 <input type="checkbox" checked id="labelDate" onchange="selectLabel(this.value)">
-            <!--    </br>ICon?
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-heart-empty"></span>
-                </button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-briefcase"></span>
-                </button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-phone"></span>
-                </button>  
-            -->
-            </div>
-        </div>
+                </br>
+                <div class="section-area-inside dropdown text-label">
+                    <span class="text-label" id="" >Add an icon to your countdown</span>
+                    <div class="dropbtn glyphicon glyphicon-menu-down"></div>
+                    <div class="dropdown-content">
+                        <span class="icon glyphicon glyphicon-heart" onclick="selectIcon('heart')"></span>
+                        <span class="icon glyphicon glyphicon-briefcase" onclick="selectIcon('briefcase')"></span>
+                        <span class="icon glyphicon glyphicon-phone" onclick="selectIcon('phone')"></span>
+                        <span class="icon glyphicon glyphicon-cloud" onclick="selectIcon('cloud')"></span>
+                        <span class="icon glyphicon glyphicon-glass" onclick="selectIcon('glass')"></span>
+                        <span class="icon glyphicon glyphicon-music" onclick="selectIcon('music')"></span>
+                        <span class="icon glyphicon glyphicon-home" onclick="selectIcon('home')"></span>
+                        <span class="icon glyphicon glyphicon-film"></span>
+                        <span class="icon glyphicon glyphicon-camera"></span>
+                        <span class="icon glyphicon glyphicon-book"></span>
+                        <span class="icon glyphicon glyphicon-facetime-video"></span>
+                        <span class="icon glyphicon glyphicon-gift"></span>
+                        <span class="icon glyphicon glyphicon-envelope"></span>
+                        <span class="icon glyphicon glyphicon-shopping-cart"></span>
+                        <span class="icon glyphicon glyphicon-ice-lolly-tasted"></span>
+                        <span class="icon glyphicon glyphicon-education"></span>
+                        <span class="icon glyphicon glyphicon-apple"></span>
+                        <span class="icon glyphicon glyphicon-plane"></span>  
+                    </div>
+                </div>
+            </div> <!-- end label personzalization area -->
+        </div>  <!-- end personalization area -->
 
-    </br>
-        Copy the URL and embeded to yout notion.
-        <textarea id="urlArea" name="urlArea" rows="4" cols="50" disabled readonly></textarea>
-        <button onclick="copyAreaBtn()">Copy text</button>
-    </br>
-    <div id="infoArea">
-        To get the Widget you need to follow the steps:</br>
-        1.sdsd</br>
-        2.ssdsd</br>
-    </div>
-
-    <div class="btn-help">
-        <span class="glyphicon glyphicon-phone" onmouseover="showInfo()" onmouseleave="hideInfo()"></span>
-    </div>
+        <div class="section-area"> <!-- start URL area -->
+            <b>3. Copy the generated URL and paste it as an embedded in your Notion page</b>
+            <textarea id="urlArea" name="urlArea" rows="4" cols="50" disabled readonly></textarea>
+            <button onclick="copyAreaBtn()">Copy text</button>
+        </div> <!-- end URL area -->
+     
+        <!-- div class="btn-help">
+            <span class="glyphicon glyphicon-info-sign" onmouseover="showInfo()" onmouseleave="hideInfo()"></span>
+        </div -->
         
-    </div>
+    </div> <!-- end lateral bar -->
     
     <div id="preview">
         <div id="countdown-area" class="centerDiv">
@@ -123,7 +137,7 @@
                 </div>
             </div>
             <div>
-               <span class="glyphicon glyphicon-phone"></span>
+               <span id="iconDecor" class="glyphicon glyphicon-phone"></span>
             </div>
         </div>
 
@@ -135,6 +149,5 @@
     </div>
 
     <script src="script.js"></script>    
-    <script src="/Countdown/script.js"></script>
 </body>
 </html>
